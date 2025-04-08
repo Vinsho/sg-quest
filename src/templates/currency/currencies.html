@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Available Currencies</title>
+    {% include "partials/head_imports.html" %}
+  </head>
+  <body class="h-screen bg-gray-900 w-screen">
+    {% include "partials/navbar.html" %}
+    <div class="max-w-screen-xl container mx-auto px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-4">
+        {% for currency in currencies %}
+        <div
+          id="currency-{{ currency.id }}"
+          class="bg-gray-800 p-4 rounded-lg shadow-md flex flex-row justify-between"
+        >
+          <div class="flex flex-row gap-4">
+            <img
+              src="{{ currency.image }}"
+              alt="{{ currency.name }} logo"
+              class="w-16 h-16 mt-2"
+            />
+            <div>
+              <h2 class="text-xl text-white">
+                {{ currency.coin_gecko_currency.name }}
+              </h2>
+              <p class="text-gray-400">
+                Symbol: {{ currency.coin_gecko_currency.symbol }}
+              </p>
+            </div>
+          </div>
+          <button
+            class="mt-2 p-1 rounded"
+            hx-delete="/api/currency/{{ currency.id }}"
+            hx-confirm="Are you sure you want to delete this currency?"
+            hx-swap="outerHTML"
+            hx-target="#currency-{{ currency.id }}"
+          >
+            <img
+              src="{{ url_for('static', filename='icons/delete.svg') }}"
+              alt="Delete"
+              class="w-6 h-6 cursor-pointer"
+            />
+          </button>
+        </div>
+        {% else %}
+        <p class="text-white">No currencies available.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

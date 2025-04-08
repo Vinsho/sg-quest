@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sigilfund Quest</title>
+    {% include "partials/head_imports.html" %}
+  </head>
+  <body class="h-screen bg-gray-900" hx-ext="response-targets">
+    {% include "partials/navbar.html" %}
+    <div class="flex flex-col items-center justify-center h-3/4">
+      <div class="flex flex-col gap-4 items-center justify-center lg:w-1/4">
+        <h1 class="text-2xl text-white">Add Crypto Currency</h1>
+        <input
+          type="search"
+          placeholder="Search Symbols"
+          id="symbol"
+          name="symbol"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          hx-post="/api/currency/search"
+          hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
+          hx-target="#response"
+          hx-indicator="#spinner"
+        />
+        <div id="response" class="text-white w-full"></div>
+        {%include "partials/spinner.html"%}
+      </div>
+    </div>
+  </body>
+</html>
