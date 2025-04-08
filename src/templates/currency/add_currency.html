@@ -20,9 +20,11 @@
           hx-post="/api/currency/search"
           hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
           hx-target="#response"
+          hx-target-error="#errors"
           hx-indicator="#spinner"
         />
         <div id="response" class="text-white w-full"></div>
+        <div id="errors" class="text-white w-full"></div>
         {%include "partials/spinner.html"%}
       </div>
     </div>

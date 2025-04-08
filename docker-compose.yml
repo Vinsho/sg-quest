@@ -17,7 +17,7 @@ services:
   sigilfund-db:
     container_name: ${DB_HOST}
     image: postgres:latest
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}

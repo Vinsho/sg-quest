@@ -62,6 +62,7 @@ def crypto_currency_delete(id):
 
 
 @crypto_currency_api.post("/search")
+@htmx_error_handler()
 def crypto_currency_search_by_symbol():
     data = SearchCurrencyBySymbolRequest.model_validate(request.form.to_dict())
     symbol = data.symbol
