@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "css": "npx tailwindcss -i ./src/static/css/input.css -o ./src/static/dist/output.css"
+    "css": "npx tailwindcss -i ./src/static/css/input.css -o ./src/static/dist/output.css",
+    "watch-css": "npx tailwindcss -i ./src/static/css/input.css -o ./src/static/dist/output.css --watch"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.3",
